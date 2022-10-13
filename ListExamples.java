@@ -12,7 +12,8 @@ class ListExamples {
     List<String> result = new ArrayList<>();
     for(String s: list) {
       if(sc.checkString(s)) {
-        result.add(0, s);
+        //originally appends to the beginning of the list, not the end
+        result.add(s);
       }
     }
     return result;
@@ -40,7 +41,7 @@ class ListExamples {
     }
     while(index2 < list2.size()) {
       result.add(list2.get(index2));
-      index1 += 1;
+      index2 += 1;//was index1, not index2
     }
     return result;
   }
