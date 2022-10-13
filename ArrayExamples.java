@@ -27,15 +27,21 @@ public class ArrayExamples {
   static double averageWithoutLowest(double[] arr) {
     if(arr.length < 2) { return 0.0; }
     double lowest = arr[0];
-    int counter = 0;
     for(double num: arr) {
-      if(num <= lowest) { lowest = num; counter++;  }
+      if(num < lowest) { lowest = num; }
     }
     double sum = 0;
+    int counter = 0;
     for(double num: arr) {
-      if(num != lowest) { sum += num; }
+      if(num != lowest || counter > 0) { 
+        sum += num;
+      }
+      if(num == lowest){
+        counter++;
+      }//bug is that it gets rid of all of the lowest
     }
-    return sum / (arr.length - counter);
+    System.out.println((sum));
+    return sum / (arr.length - 1);
   }
 }
 
